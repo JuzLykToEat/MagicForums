@@ -1,0 +1,22 @@
+.topics {
+  .grid {
+    max-width: 50px;
+    margin: 50% 50%;
+    flex: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-title{
+    color: orange;
+    font-size: 100px;
+    margin: 50px 0;
+  }
+
+  .main-text{
+    color: black;
+    font-size: 30px;
+
+  }
+}

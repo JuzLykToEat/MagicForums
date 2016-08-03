@@ -1,26 +1,26 @@
-#header {
-  // height: 52px;
-  z-index: 1;
-}
+  #header {
+    height: 52px;
+    z-index: 1;
+  }
 
-.navbar {
-  margin-bottom: 0;
-}
+  .navbar {
+    margin-bottom: 0;
+  }
 
-.navbar-default {
-  background-color: orange;
-  border-color: black;
-}
+  .navbar-default {
+    background-color: orange;
+    border-color: black;
+  }
 
-.navbar-default .navbar-toggle {
-  background-color: orange;
-  border-color: black;
-}
+  .navbar-default .navbar-toggle {
+    background-color: orange;
+    border-color: black;
+  }
 
-// .navbar-default .navbar-toggle:hover .navbar-default .navbar-toggle: focus {
-//   background-color: orange;
-// }
+  // .navbar-default .navbar-toggle:hover .navbar-default .navbar-toggle: focus {
+  //   background-color: orange;
+  // }
 
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: black;
-}
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+  }

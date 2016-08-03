@@ -1,0 +1,24 @@
+.about {
+  .background {
+    background-image: asset-url("about.jpg");
+    height: 1000px;
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .about-text {
+    flex: 0 0 300px;
+    margin: 0 auto auto 0;
+  }
+
+  .main-title{
+    color: white;
+    font-size: 100px;
+    margin: 0 auto auto 0;
+  }
+}
