@@ -1,0 +1,4 @@
+<h1><%= @topic.title %></h1>
+<p><%= @topic.description %></p>
+
+<%= link_to "Delete", topic_path(@topic), method: :Delete, data: { confirm: "Delete?"}, class: "btn btn-success btn-lg" %>

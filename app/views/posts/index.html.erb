@@ -1,0 +1,16 @@
+<div class="posts">
+  <h1 class="main-title text-center">Posts</h1>
+  <div class="text-center">
+    <%= link_to "New Post", new_post_path, class: "btn btn-success" %>
+  </div>
+    <% @posts.each do |post| %>
+      <div class="border">
+          <div class="topicdescription">
+            <h3 class="main-text"><%= post.title %></h3>
+            <h5 class="description"><%= post.body %></h5>
+          </div>
+          <div class="edit_button">
+            <%= link_to "Edit", edit_post_path(post), class: "btn btn-success btn-block" %>
+          </div>
+      </div>
+    <% end %>
