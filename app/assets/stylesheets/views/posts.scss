@@ -1,4 +1,4 @@
-.topics {
+.posts {
   .topic-container {
     display: flex;
     flex-wrap: wrap;
@@ -28,12 +28,22 @@
   }
 
   .description {
-    margin: auto 10px;
+    margin: 5px 10px;
     font-size: 15px;
   }
 
+  .no_post_text {
+    margin: 15px auto;
+    font-size: 20px;
+  }
+
+  .image_container {
+    flex: 0 0 5%;
+    margin: auto 1%;
+  }
+
   .topicdescription {
-    flex: 0 0 87%;
+    flex: 0 0 80%;
   }
 
   .edit_button {
@@ -41,29 +51,4 @@
     margin: auto 10px;
     max-width: 100px;
   }
-
-  // .topics-container {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   max-width: 600px;
-  //   margin: 0 auto;
-  //
-  //   .topic {
-  //     flex: 0 0 100%;
-  //     display: flex;
-  //     background-color: orange;
-  //
-  //     .topic-title {
-  //       flex: 0 0 30%;
-  //     }
-  //
-  //     .topic-description {
-  //       flex: 1 0 60%;
-  //     }
-  //
-  //     .btn-settings {
-  //       flex: 0 0 10%;
-  //     }
-  //   }
-  // }
 }

@@ -1,0 +1,28 @@
+<div class="posts">
+  <h1 class="main-title">Comments</h1>
+  <div class="text-center">
+    <%= link_to "New Comment", new_topic_post_comment_path, class: "btn btn-success" %>
+  </div>
+
+  <% if @post.comments.empty? %>
+    <h5 class="no_post_text text-center"><i>There's no comment in this topic.</i></h5>
+  <% else %>
+    <% @comments.each do |comment| %>
+      <div class="border">
+        <div class="image_container">
+          <div id="preview-image">
+            <% if comment.image? %>
+              <%= image_tag comment.image.thumb, class: "img-settings img-responsive center-block" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="topicdescription">
+          <h5 class="description"><%= comment.body %></h5>
+        </div>
+        <div class="edit_button">
+          <%= link_to "Edit", edit_topic_post_comment_path(@topic, @post, comment), class: "btn btn-success btn-block" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
