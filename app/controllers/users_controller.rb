@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "You've registred."
       redirect_to root_path
     else
+      flash[:danger] = @user.errors.full_messages
       render new_user_path
     end
   end
@@ -22,8 +23,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      flash[:success] = "Details updated."
+      redirect_to root_path
     else
+      flash[:danger] = @user.errors.full_messages
       redirect_to edit_user_path(@user)
     end
   end

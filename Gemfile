@@ -36,6 +36,10 @@ gem "mini_magick"
 
 gem "font-awesome-rails"
 
+gem "figaro"
+
+gem "pundit"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -43,6 +47,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   # gem 'byebug', platform: :mri
+  gem 'letter_opener'
 end
 
 group :development do
