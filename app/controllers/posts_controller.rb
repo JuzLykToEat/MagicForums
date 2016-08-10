@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
     @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
@@ -15,8 +16,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
 
     if @post.save
+      flash[:success] = "You've created a new post."
       redirect_to topic_posts_path(@topic)
     else
+      flash[:danger] = @post.errors.full_messages
       redirect_to new_topic_post_path
     end
   end

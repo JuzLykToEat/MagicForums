@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
     # @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
@@ -23,8 +24,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params.merge(post_id: params[:post_id]))
 
     if @comment.save
+      flash[:success] = "You've created a new comment."
       redirect_to topic_post_comments_path(@topic, @post)
     else
+      flash[:danger] = @comment.errors.full_messages
       redirect_to new_topic_post_comment_path
     end
   end
