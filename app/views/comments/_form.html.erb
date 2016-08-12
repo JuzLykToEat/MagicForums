@@ -1,4 +1,4 @@
-<%= form_for(comment, url: topic_post_comments_path(@topic, post), method: :post, remote: true, authenticty_token: true, html: { id: "comment-create-form", multipart: true }) do |f| %>
+<%= form_for(comment, url: topic_post_comments_path(post.topic, post), method: :post, remote: true, authenticty_token: true, html: { id: "comment-create-form", multipart: true }) do |f| %>
   <h1 class="text-center">
     Create Comment
   </h1>

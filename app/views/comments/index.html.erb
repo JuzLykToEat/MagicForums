@@ -8,6 +8,9 @@
       <% @comments.each do |comment| %>
         <%= render partial: "comment", locals: { comment: comment, post: @post } %>
       <% end %>
+      <div class="text-center">
+        <b><%= paginate @comments, :window => 4 %></b>
+      </div>
     </div>
   <% end %>
 

@@ -1,8 +1,5 @@
 <div class="topics">
   <h1 class="main-title">Topics</h1>
-  <div class="text-center">
-    <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
-  </div>
 
   <div id="topics">
     <% @topics.each do |topic| %>
@@ -13,7 +10,7 @@
     <%= link_to "Back", root_path, class: "btn btn-primary" %>
   </div>
 
-  <% if current_user.admin? %>
+  <% if current_user.present? && current_user.admin? %>
     <div class="new", id="new">
       <%= render partial: "form", locals: { topic: @topic } %>
     </div>

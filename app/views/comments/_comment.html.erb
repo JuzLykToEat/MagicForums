@@ -1,4 +1,4 @@
-<div class="border">
+<div class="border", id="border-<%= comment.id %>">
   <div class="image_container">
     <div id="preview-image">
       <% if comment.image? %>
@@ -10,6 +10,8 @@
     <h5 class="description"><%= comment.body %></h5>
   </div>
   <div class="edit_button">
-    <%= link_to "Edit", edit_topic_post_comment_path(@topic, post, comment), class: "btn btn-success btn-block" %>
+    <%= link_to "Edit", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: "btn btn-success btn-block" %>
   </div>
 </div>
+
+<!-- use comment id and add it into your element id or data-id -->

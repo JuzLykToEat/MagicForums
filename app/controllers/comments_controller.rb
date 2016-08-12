@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def index
     @post = Post.includes(:comments).find_by(id: params[:post_id])
     @topic = @post.topic
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :desc).page params[:page]
     @comment = Comment.new
   end
 
@@ -36,10 +36,8 @@ class CommentsController < ApplicationController
 
     if @comment.update(comment_params)
       flash[:success] = "You've edited the comment."
-      redirect_to topic_post_comments_path(@topic, @post)
     else
       flash[:danger] = @comment.errors.full_messages
-      redirect_to edit_topic_post_comment_path(@topic, @post, @comment)
     end
   end
 
