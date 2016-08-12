@@ -1,0 +1,7 @@
+<% if @comment.persisted? %>
+$('#new_comment').html("<%=j render partial: 'comments/form', locals: { comment: @new_comment, post: @post } %>")
+$('#comments').prepend("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+
+<% end %>
+
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")

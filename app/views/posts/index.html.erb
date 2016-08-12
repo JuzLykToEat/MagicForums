@@ -1,31 +1,19 @@
 <div class="posts">
   <h1 class="main-title">Posts</h1>
-  <div class="text-center">
-    <%= link_to "New Post", new_topic_post_path, class: "btn btn-success" %>
-  </div>
   <% if @topic.posts.empty? %>
     <h5 class="no_post_text text-center"><i>There's no post in this topic.</i></h5>
   <% else %>
-    <% @posts.each do |post| %>
-      <div class="border">
-        <div class="image_container">
-          <div id="preview-image">
-            <% if post.image? %>
-              <%= image_tag post.image.thumb, class: "img-settings img-responsive center-block" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="topicdescription">
-          <h3 class="main-text"><%= link_to post.title, topic_post_comments_path(@topic, post) %></h3>
-          <h5 class="description"><%= post.body %></h5>
-        </div>
-        <div class="edit_button">
-          <%= link_to "Edit", edit_topic_post_path(@topic, post), class: "btn btn-success btn-block" %>
-        </div>
-      </div>
-    <% end %>
+    <div id="posts">
+      <% @posts.each do |post| %>
+        <%= render partial: "post", locals: { post: post, topic: @topic } %>
+      <% end %>
+    </div>
   <% end %>
   <div class="text-center">
     <%= link_to "Back", topics_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="new_post", id ="new_post">
+    <%= render partial: "form", locals: { post: @post, topic: @topic } %>
   </div>
 </div>

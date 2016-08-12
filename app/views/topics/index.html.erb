@@ -3,20 +3,22 @@
   <div class="text-center">
     <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
   </div>
+
+  <div id="topics">
     <% @topics.each do |topic| %>
-      <div class="border">
-          <div class="topicdescription">
-            <h3 class="main-text"><%= link_to topic.title, topic_posts_path(topic) %></h3>
-            <h5 class="description"><%= topic.description %></h5>
-          </div>
-          <div class="edit_button">
-            <%= link_to "Edit", edit_topic_path(topic), class: "btn btn-success btn-block" %>
-          </div>
-      </div>
+      <%= render partial: "topic", locals: { topic: topic } %>
     <% end %>
+  </div>
   <div class="text-center">
     <%= link_to "Back", root_path, class: "btn btn-primary" %>
   </div>
+
+  <% if current_user.admin? %>
+    <div class="new", id="new">
+      <%= render partial: "form", locals: { topic: @topic } %>
+    </div>
+  <% end %>
+
   <!-- <div class="topics-container">
     <% @topics.each do |topic| %>
       <div class="topic">
