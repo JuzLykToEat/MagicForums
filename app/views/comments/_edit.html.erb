@@ -1,4 +1,4 @@
-<div class="edit-container", id="border-<%= comment.id %>" >
+<div class="edit-container" >
   <%= form_for(comment, url: topic_post_comment_path(post.topic, post, comment), remote: true, authenticty_token: true, html: { id: "comment-update-form" }) do |f| %>
     <h1 class="text-center">
       Edit Comment
@@ -24,6 +24,9 @@
 
     <div class="form-group text-center">
       <%= f.submit "Update Comment", remote: true, class: "btn btn-success btn-lg" %>
+      <div class="btn btn-primary btn-lg", id="cancel-button-<%= comment.id %>">
+        Cancel
+      </div>
     </div>
 
     <div class="text-center">

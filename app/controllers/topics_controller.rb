@@ -28,11 +28,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
 
     if @topic.update(topic_params)
-      flash[:success] = "You've updated the topic."
-      redirect_to topics_path
+      flash.now[:success] = "You've updated the topic."
     else
-      flash[:danger] = @topic.errors.full_messages
-      redirect_to edit_topic_path(@topic)
+      flash.now[:danger] = @topic.errors.full_messages
     end
   end
 

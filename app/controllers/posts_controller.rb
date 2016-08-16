@@ -31,11 +31,9 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
 
     if @post.update(post_params)
-      flash[:success] = "You've edited the post."
-      redirect_to topic_posts_path(@topic)
+      flash.now[:success] = "You've edited the post."
     else
-      flash[:danger] = @post.errors.full_messages
-      redirect_to edit_topic_post_path(@topic, @post)
+      flash.now[:danger] = @post.errors.full_messages
     end
   end
 

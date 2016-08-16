@@ -46,6 +46,8 @@ gem 'remotipart', github: 'sr3d/remotipart'
 
 gem 'kaminari'
 
+gem 'redis', '~>3.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

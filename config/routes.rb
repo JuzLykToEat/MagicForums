@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :edit, :create, :update]
 
+  mount ActionCable.server => '/cable'
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

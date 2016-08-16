@@ -1,4 +1,5 @@
 $('#border-<%= @comment.id %>').html("<%=j render partial: 'comments/edit', locals: { comment: @comment, post: @post } %>")
 
-
-// Figure a way to add your comment id into #topicdescription
+$('#cancel-button-<%= @comment.id %>').on('click', function() {
+  $('#border-<%= @comment.id %>').after("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post, extra_class: '' } %>").remove()
+})

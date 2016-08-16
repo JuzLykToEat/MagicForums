@@ -1,5 +1,5 @@
-<div class="edit">
-  <%= form_for(@topic, url: topic_path(@topic), html: { id: "topic-update-form" }) do |f| %>
+<div class="edit-container">
+  <%= form_for(topic, url: topic_path(topic), remote: true, html: { id: "topic-update-form" }) do |f| %>
     <h1 class="text-center">
       Edit Topic
     </h1>
@@ -16,10 +16,13 @@
 
     <div class="form-group text-center">
       <%= f.submit "Update Topic", class: "btn btn-success btn-lg" %>
+      <div class="btn btn-primary btn-lg", id="cancel-button-<%= topic.id %>">
+        Cancel
+      </div>
     </div>
 
     <div class="text-center">
-    <%= link_to "Delete", topic_path(@topic), method: :Delete, data: { confirm: "Delete?"}, class: "btn btn-success btn-lg" %>
+    <%= link_to "Delete", topic_path(topic), method: :Delete, data: { confirm: "Delete?"}, class: "btn btn-success btn-lg" %>
     </div>
 
   <% end %>

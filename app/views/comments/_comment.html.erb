@@ -1,16 +1,22 @@
-<div class="border", id="border-<%= comment.id %>">
+<div class="border" id="border-<%= comment.id %>" data-id="<%=comment.id%>">
   <div class="image_container">
-    <div id="preview-image">
+    <div id="preview-image-<%= comment.id %>">
       <% if comment.image? %>
         <%= image_tag comment.image.thumb, class: "img-settings img-responsive center-block" %>
       <% end %>
     </div>
   </div>
+
   <div class="topicdescription">
     <h5 class="description"><%= comment.body %></h5>
   </div>
-  <div class="edit_button">
-    <%= link_to "Edit", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: "btn btn-success btn-block" %>
+
+  <div class="control-panel">
+    <% if current_user.present? && current_user.id == comment.user_id || current_user.admin? || current_user.moderator? %>
+      <div class="edit_button">
+        <%= link_to "Edit", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: "btn btn-success btn-block" %>
+      </div>
+    <% end %>
   </div>
 </div>
 

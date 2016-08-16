@@ -1,0 +1,10 @@
+<div class="topicdescription">
+  <h3 class="main-text"><%= link_to topic.title, topic_posts_path(topic) %></h3>
+  <h5 class="description"><%= topic.description %></h5>
+</div>
+
+<% if current_user.present? && current_user&.admin? || current_user&.moderator? %>
+  <div class="edit_button">
+    <%= link_to "Edit", edit_topic_path(topic), remote: true, class: "btn btn-success btn-block" %>
+  </div>
+<% end %>

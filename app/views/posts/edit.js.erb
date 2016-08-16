@@ -1,0 +1,5 @@
+$('#border-<%= @post.id %>').html("<%=j render partial: 'posts/edit', locals: { post: @post, topic: @topic } %>")
+
+$('#cancel-button-<%= @post.id %>').on('click', function() {
+  $('#border-<%= @post.id %>').after("<%=j render partial: 'posts/post', locals: { post: @post, topic: @topic, extra_class: '' } %>").remove()
+})

@@ -6,11 +6,11 @@
     margin: 0 auto;
   }
 
-.edit-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto auto 30px auto;
-}
+  .edit-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto auto 30px auto;
+  }
 
   .border {
     margin: 20px 30px;
@@ -56,5 +56,9 @@
     flex: 0 0 10%;
     margin: auto 10px;
     max-width: 100px;
+  }
+
+  .hidden {
+  display: none;
   }
 }
