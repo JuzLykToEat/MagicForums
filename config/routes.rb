@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'landing#index'
   get :about, to: 'static_pages#about'
+  post :upvote, to: 'votes#upvote'
+  post :downvote, to: 'votes#downvote'
+
   resources :topics, except: [:show] do
     resources :posts, except: [:show] do
       resources :comments, except: [:show]

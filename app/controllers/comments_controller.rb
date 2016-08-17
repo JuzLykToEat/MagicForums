@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       CommentBroadcastJob.perform_now("destroy", @comment)
-      flash[:success] = "You've deleted the comment."
+      flash.now[:success] = "You've deleted the comment."
     # else
     #   redirect_to post_path(@post)
     end

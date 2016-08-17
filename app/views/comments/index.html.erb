@@ -1,18 +1,18 @@
 <div class="posts" id="comment-index" data-id="<%=@post.id%>">
   <h1 class="main-title">Comments</h1>
 
-  <% if @post.comments.empty? %>
-    <h5 class="no_post_text text-center"><i>There's no comment in this topic.</i></h5>
-  <% else %>
-    <div id="comments">
-      <% @comments.each do |comment| %>
-        <%= render partial: "comment", locals: { comment: comment, post: @post } %>
-      <% end %>
-      <div class="text-center">
-        <b><%= paginate @comments, :window => 4 %></b>
-      </div>
-    </div>
-  <% end %>
+  <div id="comments">
+    <% if @post.comments.empty? %>
+      <h5 class="no_post_text text-center"><i>There's no comment in this topic.</i></h5>
+    <% else %>
+        <% @comments.each do |comment| %>
+          <%= render partial: "comment", locals: { comment: comment, post: @post } %>
+        <% end %>
+        <div class="text-center">
+          <b><%= paginate @comments, :window => 4 %></b>
+        </div>
+    <% end %>
+  </div>
 
   <div class="text-center">
     <%= link_to "Back", topic_posts_path, class: "btn btn-primary" %>

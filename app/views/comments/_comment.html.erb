@@ -9,10 +9,13 @@
 
   <div class="topicdescription">
     <h5 class="description"><%= comment.body %></h5>
+    <%= link_to "Like", upvote_path(comment_id: comment.id), method: :post, class: "btn btn-success btn-block" %>
+    <%= link_to "Dislike", downvote_path(comment_id: comment.id), method: :post, class: "btn btn-success btn-block" %>
+    <h5 class="description"><%= comment.total_votes %></h5>
   </div>
 
   <div class="control-panel">
-    <% if current_user.present? && current_user.id == comment.user_id || current_user.admin? || current_user.moderator? %>
+    <% if current_user.present? && current_user.id == comment.user_id || current_user&.admin? || current_user&.moderator? %>
       <div class="edit_button">
         <%= link_to "Edit", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: "btn btn-success btn-block" %>
       </div>
