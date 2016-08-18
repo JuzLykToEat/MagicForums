@@ -9,18 +9,34 @@
 
   <div class="topicdescription">
     <h5 class="description"><%= comment.body %></h5>
-    <%= link_to "Like", upvote_path(comment_id: comment.id), method: :post, class: "btn btn-success btn-block" %>
-    <%= link_to "Dislike", downvote_path(comment_id: comment.id), method: :post, class: "btn btn-success btn-block" %>
-    <h5 class="description"><%= comment.total_votes %></h5>
+  </div>
+
+  <div class="like_dislike_container">
+    <% liked, disliked = "btn-primary", "btn-primary" %>
+    <% if current_user %>
+      <% case current_user.votes.find_by(comment_id: comment.id).like %>
+      <% when -1 %>
+        <% disliked = "btn-info" %>
+      <% when 1 %>
+        <% liked = "btn-info" %>
+      <% end %>
+    <% end %>
+
+    <%= link_to upvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{liked} btn-block like-button" do %>
+      <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <h5 class="likes-description"><%= comment.total_likes %></h5>
+    <% end %>
+    <%= link_to downvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{disliked} btn-block dislike-button" do %>
+      <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+      <h5 class="dislikes-description"><%= comment.total_dislikes %></h5>
+    <% end %>
   </div>
 
   <div class="control-panel">
-    <% if current_user.present? && current_user.id == comment.user_id || current_user&.admin? || current_user&.moderator? %>
+    <% if current_user && current_user.id == comment.user_id || current_user&.admin? || current_user&.moderator? %>
       <div class="edit_button">
         <%= link_to "Edit", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: "btn btn-success btn-block" %>
       </div>
     <% end %>
   </div>
 </div>
-
-<!-- use comment id and add it into your element id or data-id -->

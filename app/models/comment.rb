@@ -7,7 +7,12 @@ class Comment < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates :body, length: { maximum: 200 }, presence: true
 
-  def total_votes
-    votes.pluck(:value).sum
+  def total_likes
+    votes.where(like: 1).count
   end
+
+  def total_dislikes
+    votes.where(like: -1).count
+  end
+
 end

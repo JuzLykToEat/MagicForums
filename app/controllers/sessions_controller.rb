@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
     if user
       session[:id] = user.id
       flash[:success] = "Welcome back #{current_user.username}"
-      redirect_to root_path
+      redirect_to session.delete(:return_to)
     else
       flash[:danger] = "Error logging in"
       render :new

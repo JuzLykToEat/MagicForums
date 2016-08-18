@@ -49,12 +49,26 @@
   }
 
   .topicdescription {
-    flex: 0 0 80%;
+    flex: 0 0 69%;
+    margin: 5px;
   }
 
-  .edit_button {
+  .like_dislike_container {
     flex: 0 0 10%;
-    margin: auto 10px;
+    margin: auto 1%;
+
+    .btn {
+      align-content: center;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 5px;
+    }
+  }
+
+  .control-panel {
+    flex: 0 0 10%;
+    margin: auto 1%;
     max-width: 100px;
   }
 

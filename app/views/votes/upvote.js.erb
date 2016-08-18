@@ -1,0 +1,3 @@
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+$(".border[data-id=<%=@vote.comment.id%>] .like-button").removeClass("btn-info btn-primary").addClass("<%=@liked%>")
+$(".border[data-id=<%=@vote.comment.id%>] .dislike-button").removeClass("btn-info btn-primary").addClass("<%=@disliked%>")

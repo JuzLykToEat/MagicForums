@@ -1,15 +1,15 @@
 votesChannelFunctions = () ->
 
-    if $('#comment-index').length > 0
-      App.posts_channel = App.cable.subscriptions.create {
-        channel: "VotesChannel"
-      },
-      connected: () ->
+  if $('#comment-index').length > 0
+    App.posts_channel = App.cable.subscriptions.create {
+      channel: "VotesChannel"
+    },
+    connected: () ->
 
-      disconnected: () ->
+    disconnected: () ->
 
-      received: (data) ->
-        if $('#comment-index').data().id == data.post.id
-           $(".border[data-id=#{data.comment.id}]").replaceWith(data.partial)
+    received: (data) ->
+      $(".border[data-id=#{data.comment_id}] .likes-description").html(data.likes)
+      $(".border[data-id=#{data.comment_id}] .dislikes-description").html(data.dislikes)
 
-  $(document).on 'turbolinks:load', votesChannelFunctions
+$(document).on 'turbolinks:load', votesChannelFunctions

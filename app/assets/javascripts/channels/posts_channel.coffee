@@ -27,7 +27,6 @@ postsChannelFunctions = () ->
     disconnected: () ->
 
     received: (data) ->
-        debugger
         switch data.type
           when "create" then createComment(data)
           when "update" then updateComment(data)
