@@ -20,12 +20,12 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
     authorize @topic
   end
 
   def update
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
 
     if @topic.update(topic_params)
       flash.now[:success] = "You've updated the topic."
@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
     if @topic.destroy
       flash[:success] = "You've deleted the topic."
       redirect_to topics_path

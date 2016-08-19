@@ -10,9 +10,12 @@
     <h3 class="main-text"><%= link_to post.title, topic_post_comments_path(@topic, post) %></h3>
     <h5 class="description"><%= post.body %></h5>
   </div>
-  <% if current_user.present? && current_user.id == post.user_id || current_user&.admin? || current_user&.moderator? %>
-    <div class="edit_button">
-      <%= link_to "Edit", edit_topic_post_path(@topic, post), remote: true, class: "btn btn-success btn-block" %>
-    </div>
-  <% end %>
+
+  <div class="control-panel">
+    <% if current_user.present? && current_user.id == post.user_id || current_user&.admin? || current_user&.moderator? %>
+      <div class="edit_button">
+        <%= link_to "Edit", edit_topic_post_path(@topic, post), remote: true, class: "btn btn-success btn-block" %>
+      </div>
+    <% end %>
+  </div>
 </div>
