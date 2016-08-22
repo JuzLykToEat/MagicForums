@@ -58,6 +58,18 @@ group :development, :test do
   gem 'pry'
   # gem 'byebug', platform: :mri
   gem 'letter_opener'
+
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

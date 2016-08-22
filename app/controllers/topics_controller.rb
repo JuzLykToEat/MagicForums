@@ -26,7 +26,8 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.friendly.find(params[:id])
-
+    authorize @topic
+    binding.pry
     if @topic.update(topic_params)
       flash.now[:success] = "You've updated the topic."
     else
