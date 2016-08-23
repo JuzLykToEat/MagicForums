@@ -14,7 +14,7 @@
   <div class="like_dislike_container">
     <% liked, disliked = "btn-primary", "btn-primary" %>
     <% if current_user %>
-      <% case current_user.votes.find_by(comment_id: comment.id).like %>
+      <% case current_user.votes.find_by(comment_id: comment.id)&.like %>
       <% when -1 %>
         <% disliked = "btn-info" %>
       <% when 1 %>

@@ -82,7 +82,7 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
-  describe "update user" do
+  describe "update topic" do
 
     it "should redirect if not logged in" do
       params = { id: @topic.id, topic: { title: "I'm a new title", description: "I'm a new description" } }
