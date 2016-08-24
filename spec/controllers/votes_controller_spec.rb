@@ -39,7 +39,6 @@ RSpec.describe VotesController, type: :controller do
       post :upvote, xhr: true, params: params, session: { id: @user2.id }
 
       expect(@vote.like).to eql(1)
-      binding.pry
       expect(@comment.total_likes).to eql(0)
       expect(flash[:success]).to eql("You've unliked a comment.")
     end

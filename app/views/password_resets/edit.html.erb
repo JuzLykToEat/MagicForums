@@ -1,0 +1,17 @@
+<div class="new">
+  <%= form_for(:user, url: password_reset_path(id: @token), method: :patch, html: { id: "user-edit-password-form" }) do |f| %>
+    <h1 class="text-center">
+      Reset Your Password
+    </h1>
+
+    <div class="form-group">
+      <h4> <%= f.label :password_field, "New Password:" %> </h4>
+      <%= f.password_field :password, id: "user_password__field", class: 'form-control' %>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.submit "Update", class: "btn btn-success btn-lg" %>
+    </div>
+
+  <% end %>
+</div>

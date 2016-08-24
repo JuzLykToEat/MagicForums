@@ -23,7 +23,6 @@ class PasswordResetsController < ApplicationController
 
     def update
       @user = User.find_by(password_reset_token: params[:id])
-
       if @user && token_active?
         @user.update(password: user_params[:password], password_reset_token: nil, password_reset_at: nil)
         flash[:success] = "Password updated, you may log in now"
