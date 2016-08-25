@@ -22,11 +22,11 @@
       <% end %>
     <% end %>
 
-    <%= link_to upvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{liked} btn-block like-button" do %>
+    <%= link_to upvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{liked} btn-block like-button", id: "like-button" do %>
       <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
       <h5 class="likes-description"><%= comment.total_likes %></h5>
     <% end %>
-    <%= link_to downvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{disliked} btn-block dislike-button" do %>
+    <%= link_to downvote_path(comment_id: comment.id), remote: true, method: :post, class: "btn #{disliked} btn-block dislike-button", id: "dislike-button" do %>
       <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
       <h5 class="dislikes-description"><%= comment.total_dislikes %></h5>
     <% end %>

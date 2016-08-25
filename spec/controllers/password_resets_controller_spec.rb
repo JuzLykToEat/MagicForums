@@ -4,10 +4,12 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   before(:all) do
 
-    @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1, password_reset_token: nil, password_reset_at: nil})
-    @token = "hahahahaha"
-    @user_to_reset = User.create({username: "Boey", password: "12345", email: "boey@email.com", id: 2, password_reset_token: @token, password_reset_at: Time.now})
+    # @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1, password_reset_token: nil, password_reset_at: nil})
+    # @user_to_reset = User.create({username: "Boey", password: "12345", email: "boey@email.com", id: 2, password_reset_token: @token, password_reset_at: Time.now})
 
+    @token = "hahahahaha"
+    @user = create(:user, password_reset_token: nil, password_reset_at: nil)
+    @user_to_reset = create(:user, :sequenced_email, :sequenced_username, password_reset_token: @token, password_reset_at: Time.now)
   end
 
   describe "new" do
@@ -37,7 +39,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
     it "should send instruction to user" do
 
-      params = { reset: { email: "adam@email.com"}}
+      params = { reset: { email: "user@email.com"}}
       post :create, params: params
       @user.reload
       expect(@user.password_reset_token).to be_present
@@ -51,7 +53,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
     it "should render edit" do
 
-      params = { id: @token, reset: { email: "adam@email.com"}}
+      params = { id: @token }
       get :edit, params: params
 
       expect(subject).to render_template(:edit)
@@ -67,7 +69,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       patch :update, params: params
 
       @user_to_reset.reload
-      @old_password_user = @user_to_reset.authenticate("12345")
+      @old_password_user = @user_to_reset.authenticate("password")
       @updated_user = @user_to_reset.authenticate("54321")
 
       expect(@old_password_user).to eql(false)

@@ -3,11 +3,17 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
 
   before(:all) do
-    @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com"})
-    @user_admin = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
-    @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
-    @topic = Topic.create({title: "Example Title", description: "Example Description"})
-    @post = Post.create({title: "Example Title", body: "Example Body", user_id: 1})
+    # @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com"})
+    # @user_admin = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
+    # @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
+    # @topic = Topic.create({title: "Example Title", description: "Example Description"})
+    # @post = Post.create({title: "Example Title", body: "Example Body", user_id: 1})
+
+    @user_admin = create(:user, :admin)
+    @user = create(:user, :sequenced_email, :sequenced_username)
+    @unauthorized_user = create(:user, :sequenced_email, :sequenced_username)
+    @topic = create(:topic)
+    @post = create(:post, user_id: 2)
   end
 
   describe "index" do
@@ -79,7 +85,6 @@ RSpec.describe PostsController, type: :controller do
 
       params = { topic_id: @topic.slug, id: @post.id }
       get :edit, xhr: true, params: params, session: { id: @user.id }
-
       current_user = subject.send(:current_user)
       expect(subject).to render_template(:edit)
       expect(current_user).to be_present

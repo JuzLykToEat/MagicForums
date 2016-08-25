@@ -3,9 +3,13 @@ require 'rails_helper'
 RSpec.describe TopicsController, type: :controller do
 
   before(:all) do
-    @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
-    @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
-    @topic = Topic.create({title: "Example Title", description: "Example Description", user_id: "1"})
+    # @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
+    # @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
+    # @topic = Topic.create({title: "Example Title", description: "Example Description", user_id: "1"})
+
+    @user = create(:user, :admin)
+    @unauthorized_user = create(:user)
+    @topic = create(:topic)
   end
 
   describe "index" do

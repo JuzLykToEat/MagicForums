@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
 
   before(:all) do
-    @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1})
+    # @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1})
+
+    @user = create(:user)
   end
 
   describe "new" do
@@ -30,9 +32,9 @@ RSpec.describe SessionsController, type: :controller do
 
     it "should log in user" do
 
-      params = { user: { email: "adam@email.com", password: "12345" }}
+      params = { user: { email: "user@email.com", password: "password" }}
       post :create, params: params
-
+      
       expect(session[:id]).to eql(@user.id)
       current_user = subject.send(:current_user)
       expect(flash[:success]).to eql("Welcome back #{current_user.username}")

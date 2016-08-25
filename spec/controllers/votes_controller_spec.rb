@@ -3,12 +3,17 @@ require 'rails_helper'
 RSpec.describe VotesController, type: :controller do
 
   before(:all) do
-    @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1})
-    @user2 = User.create({username: "Boey", password: "54321", email: "boey@email.com", id: 2})
-    @comment = Comment.create({body: "Example body", user_id: 1, id: 1})
-    @comment2 = Comment.create({body: "Example body", user_id: 1, id: 2})
+    # @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1})
+    # @user2 = User.create({username: "Boey", password: "54321", email: "boey@email.com", id: 2})
+    # @comment = Comment.create({body: "Example body", user_id: 1, id: 1})
+    # @comment2 = Comment.create({body: "Example body", user_id: 1, id: 2})
     @vote = Vote.create({like: 1, user_id:2, comment_id: 1})
     @vote2 = Vote.create({like: -1, user_id:2, comment_id: 2})
+
+    @user = create(:user)
+    @user2 = create(:user, :sequenced_email, :sequenced_username)
+    @comment = create(:comment)
+    @comment2 = create(:comment, :sequenced_body)
   end
 
   describe "upvote" do

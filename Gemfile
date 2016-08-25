@@ -50,6 +50,8 @@ gem 'redis', '~>3.2'
 
 gem 'friendly_id', '~> 5.1.0'
 
+gem "chromedriver-helper"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

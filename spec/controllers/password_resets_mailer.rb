@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe PasswordResetsMailer do
   before(:all) do
-    @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1, password_reset_token: nil, password_reset_at: nil})
+    # @user = User.create({username: "Adam", password: "12345", email: "adam@email.com", id: 1, password_reset_token: nil, password_reset_at: nil})
+    @user = create(:user)
   end
 
   describe "should send email" do

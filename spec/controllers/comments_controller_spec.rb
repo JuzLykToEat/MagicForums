@@ -3,12 +3,19 @@ require 'rails_helper'
 RSpec.describe CommentsController, type: :controller do
 
   before(:all) do
-    @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com"})
-    @user_admin = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
-    @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
-    @topic = Topic.create({title: "Example Title", description: "Example Description"})
-    @post = Post.create({title: "Example Title", body: "Example Body"})
-    @comment = Comment.create({body: "Example body", user_id: 1})
+    # @user = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com"})
+    # @user_admin = User.create({username: "boleh-masuk", password: "12345", email: "boleh-masuk@email.com", role: "admin"})
+    # @unauthorized_user = User.create({username: "no-entry", password: "54321", email: "no-entry@email.com"})
+    # @topic = Topic.create({title: "Example Title", description: "Example Description"})
+    # @post = Post.create({title: "Example Title", body: "Example Body"})
+    # @comment = Comment.create({body: "Example body", user_id: 1})
+
+    @user_admin = create(:user, :admin)
+    @user = create(:user, :sequenced_email, :sequenced_username)
+    @unauthorized_user = create(:user, :sequenced_email, :sequenced_username)
+    @topic = create(:topic)
+    @post = create(:post)
+    @comment = create(:comment, user_id: 2)
   end
 
   describe "index" do
@@ -44,7 +51,6 @@ RSpec.describe CommentsController, type: :controller do
     # end
 
     it "should create new comment" do
-
       params = { topic_id: @topic.slug, post_id: @post.slug, comment: { body: "I'm a body" }}
       post :create, xhr: true, params: params, session: { id: @user.id }
 

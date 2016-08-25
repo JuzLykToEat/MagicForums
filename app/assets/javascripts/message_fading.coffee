@@ -11,4 +11,4 @@ flashMessagesFunctions = () ->
   if $('.flash-messages').length > 0
     clearFlashMessages()
 
-$(document).on 'turbolinks:load', flashMessagesFunctions
+# $(document).on 'turbolinks:load', flashMessagesFunctions
