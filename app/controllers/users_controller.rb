@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
 
     if @user.update(user_params)
